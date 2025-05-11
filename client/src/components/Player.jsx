@@ -1,4 +1,4 @@
-export const Player = ({ player }) => {
+export const Player = ({ player, audio }) => {
   return (
         <article>
           <table>
@@ -35,6 +35,9 @@ export const Player = ({ player }) => {
               </tr>
             </tbody>
           </table>
+          <audio controls autoPlay src={audio?.src}>
+        Your browser does not support the audio element.
+      </audio>
         </article>
   );
 };

@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Directory } from '../data/Directory';
 import { Player } from './Player';
+import { audioFiles } from '../components/Audio';
 
 export const Controls = () => {
   const [activePlayer, setActivePlayer] = useState(null);
+  const [audio, setAudio] = useState(null);
 
-  const handlePlayerClick = (firstName) => {
-    setActivePlayer((prev) => (prev === firstName ? null : firstName));
+  const handlePlayerClick = (player) => {
+    setActivePlayer((prev) => (prev === player ? null : player));
+    setAudio(audioFiles[player.firstName])
   };
 
   return (
@@ -26,7 +29,7 @@ export const Controls = () => {
 {activePlayer && (
         <div id={activePlayer.id} className='player-name'>
         <main id="playerStuff">
-          <Player player={activePlayer} />
+          <Player player={activePlayer} audio={audio} />
         </main>
         </div>
       )}
